@@ -1,0 +1,17 @@
+Also apply the xjavac classpath hack when running under libgcj.
+
+  http://issues.apache.org/bugzilla/show_bug.cgi?id=34551
+  http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=152255
+
+--- tools/org/apache/xerces/util/XJavac.java~	2005-06-10 10:18:47 +0100
++++ tools/org/apache/xerces/util/XJavac.java	2005-06-10 11:14:35 +0100
+@@ -97,7 +97,8 @@
+             else if( (vendor.indexOf("SUN") >= 0) || 
+                      (vendor.indexOf("BLACKDOWN") >= 0) || 
+                      (vendor.indexOf("APPLE") >= 0) ||
+-                     (vendor.indexOf("HEWLETT-PACKARD") >= 0)) {
++                     (vendor.indexOf("HEWLETT-PACKARD") >= 0) ||
++                     (vendor.indexOf("FREE SOFTWARE FOUNDATION") >= 0)) {
+                 // we're on an SUN 1.4; fiddle with the bootclasspath.
+                 // since we can't eviscerate XML-related info here,
+                 // we must use the classpath
